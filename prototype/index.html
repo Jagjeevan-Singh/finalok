@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="FinalOK concept landing page for clearer client design approvals." />
+  <title>FinalOK | Fewer follow-ups. Clear approvals.</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="logo" href="#home"><span class="symbol">✓</span> FinalOK</a>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#how">How it works</a>
+        <a href="#demo">Interactive demo</a>
+        <a href="#faq">FAQ</a>
+        <a href="#pricing">Pilot offer</a>
+      </nav>
+      <a class="btn secondary" href="#demo">Try the demo ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">For independent social media designers</div>
+          <h1>Stop asking,<br><em>“Is this final?”</em></h1>
+          <p class="intro">Share one review link for every design. Clients can approve it or request changes without creating another account.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#demo">Try a 40-second demo →</a>
+            <button class="btn secondary" type="button" onclick="showLead()">Request a pilot</button>
+          </div>
+          <p class="hero-note">Made for freelancers who juggle design approvals over chat.</p>
+        </div>
+
+        <aside class="visual" aria-label="Sample review dashboard">
+          <div class="visual-header">
+            <strong>Design reviews</strong>
+            <span class="appbadge">Sample workspace</span>
+          </div>
+          <div class="fake-row">
+            <div><b>Diwali weekend banner</b><span>Cedar &amp; Co. • Version 2</span></div>
+            <span class="status yes">Approved</span>
+          </div>
+          <div class="fake-row">
+            <div><b>New menu launch</b><span>Bluebird Café • Version 1</span></div>
+            <span class="status edit">Changes asked</span>
+          </div>
+          <div class="fake-row">
+            <div><b>Monsoon flash sale</b><span>Willow Studio • Version 1</span></div>
+            <span class="status await">Awaiting review</span>
+          </div>
+          <p class="tiny" style="margin: 12px 0 0;">Illustrative screens only · no real customer information</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="eyebrow">Less ambiguity, not more software</div>
+        <h2>One clear decision per version.</h2>
+        <p class="sub">Keep WhatsApp for communication. Use FinalOK only when it is time for the client to decide.</p>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <strong>3x</strong>
+            <span>fewer revision loops</span>
+          </div>
+          <div class="stat-box">
+            <strong>1 link</strong>
+            <span>for each design version</span>
+          </div>
+          <div class="stat-box">
+            <strong>40 sec</strong>
+            <span>to understand the flow</span>
+          </div>
+        </div>
+
+        <div class="cols">
+          <article class="tile">
+            <span class="num">01</span>
+            <h3>Create a review</h3>
+            <p>Label the design and the version so the client knows exactly what they are reviewing.</p>
+          </article>
+          <article class="tile">
+            <span class="num">02</span>
+            <h3>Send the link</h3>
+            <p>Share the link in your existing chat. The client can approve or request changes.</p>
+          </article>
+          <article class="tile">
+            <span class="num">03</span>
+            <h3>See the status</h3>
+            <p>Keep a clear decision on record instead of guessing whether “looks good” means sign-off.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section demo-bg" id="demo">
+      <div class="wrap">
+        <div class="eyebrow">Click through the core journey</div>
+        <h2>Try the working local prototype</h2>
+        <p class="sub">The buttons change the demo state in this browser. It does not send messages, generate live links, store data, or contact customers.</p>
+
+        <div class="demo-shell">
+          <div class="demo-head">
+            <h3>Design approval · sample project</h3>
+            <button class="btn secondary" type="button" onclick="resetDemo()">↺ Reset demo</button>
+          </div>
+
+          <div class="tabs" aria-label="Demo stages">
+            <button class="step active" data-stage="1" onclick="go(1)">1 · Create</button>
+            <button class="step" data-stage="2" onclick="go(2)">2 · Share link</button>
+            <button class="step" data-stage="3" onclick="go(3)">3 · Client decides</button>
+            <button class="step" data-stage="4" onclick="go(4)">4 · View outcome</button>
+          </div>
+
+          <div id="stage1" class="stage">
+            <div class="split">
+              <form onsubmit="event.preventDefault(); saveProject();">
+                <div class="field">
+                  <label for="designer">Designer / freelancer</label>
+                  <input id="designer" required value="Jagjeevan Design Studio" />
+                </div>
+                <div class="field">
+                  <label for="client">Client name</label>
+                  <input id="client" required value="Cedar &amp; Co. Café" />
+                </div>
+                <div class="field">
+                  <label for="campaign">Design title</label>
+                  <input id="campaign" required value="Weekend market Instagram post" />
+                </div>
+                <div class="field">
+                  <label for="version">Version</label>
+                  <input id="version" required value="V2" />
+                </div>
+                <button class="btn" type="submit">Create sample review →</button>
+              </form>
+
+              <aside class="sample-card">
+                <h4>What this stage demonstrates</h4>
+                <p><b>Freelancer:</b> sets the client, asset name, and version.</p>
+                <p><b>In a future real product:</b> they would attach the image and receive a secure, revocable review URL.</p>
+                <hr />
+                <p>For this offline demo, a built-in illustrative design is used. No upload or authentication is implemented.</p>
+              </aside>
+            </div>
+          </div>
+
+          <div id="stage2" class="stage" hidden>
+            <div class="split">
+              <div>
+                <div class="eyebrow">Ready for review</div>
+                <h3 id="shareTitle" style="margin: 12px 0 10px; font-size: clamp(1.5rem, 2vw, 2.3rem); letter-spacing: -0.05em;">Weekend market Instagram post</h3>
+                <p class="helper">This is a <b>non-functional example</b> of what a review URL could look like.</p>
+                <div class="linkbox" id="demoLink">finalok.example/review/sample-001</div>
+                <div class="sp"></div>
+                <button class="btn secondary" type="button" onclick="copyDemo()">Copy sample link text</button>
+                <p id="copyStatus" class="tiny" role="status"></p>
+                <div class="sp"></div>
+                <button class="btn" type="button" onclick="go(3)">Open simulated client review →</button>
+              </div>
+
+              <aside class="sample-card">
+                <h4>WhatsApp stays the channel</h4>
+                <p>The freelancer would paste a review URL into an existing client chat. No WhatsApp API integration is required for this prototype.</p>
+                <hr />
+                <p>The example domain is intentionally fake. This stage demonstrates flow, not a live deployment.</p>
+              </aside>
+            </div>
+          </div>
+
+          <div id="stage3" class="stage" hidden>
+            <div class="split">
+              <div class="poster" role="img" aria-label="Illustrative poster mockup for Cedar and Co weekend market">
+                <small>CEDAR &amp; CO.</small>
+                <strong>THE<br>WEEKEND<br>MARKET</strong>
+                <span class="seal">Fresh brews · Sat &amp; Sun</span>
+              </div>
+
+              <div>
+                <div class="eyebrow">Client review (simulated)</div>
+                <h3 id="reviewTitle" style="margin: 12px 0 8px; font-size: clamp(1.5rem, 2vw, 2.3rem); letter-spacing: -0.05em;">Weekend market Instagram post</h3>
+                <p class="helper" id="reviewClient">For Cedar &amp; Co. Café · Version V2</p>
+                <div class="fineprint">This is a fictional sample. Clicking below changes the browser-only demo state and is not a real sign-off.</div>
+                <div class="sp"></div>
+
+                <div class="field">
+                  <label for="feedback">Optional comments (required for changes)</label>
+                  <textarea id="feedback" maxlength="400" placeholder="E.g., Please make the event date larger."></textarea>
+                </div>
+
+                <div class="choices">
+                  <button class="btn btn-yes" type="button" onclick="submitDecision('approved')">✓ Approve this version</button>
+                  <button class="btn btn-edit" type="button" onclick="submitDecision('changes')">↶ Request changes</button>
+                </div>
+                <p id="clientError" class="tiny" role="alert"></p>
+              </div>
+            </div>
+          </div>
+
+          <div id="stage4" class="stage" hidden>
+            <div class="split">
+              <div>
+                <div class="eyebrow">Freelancer dashboard · demo</div>
+                <h3 id="resultTitle" style="margin: 12px 0 8px; font-size: clamp(1.8rem, 2vw, 2.5rem); letter-spacing: -0.05em;">Weekend market Instagram post</h3>
+                <div id="resultBadge" class="status await" style="display: inline-flex;">Awaiting review</div>
+                <div class="sp"></div>
+                <p class="helper" id="resultMeta">Cedar &amp; Co. Café · V2</p>
+                <div id="resultNote" class="stamp warn">No decision has been recorded yet. Try the client review step.</div>
+                <div class="sp"></div>
+                <button class="btn secondary" type="button" onclick="go(3)">← Return to client review</button>
+              </div>
+
+              <aside class="sample-card">
+                <h4>Decision log</h4>
+                <p id="history">No action yet (demo).</p>
+                <hr />
+                <p><b>The product value:</b> one version, one clear status, and the client comment together.</p>
+                <p>No email, WhatsApp message, or payment is processed in this prototype.</p>
+              </aside>
+            </div>
+          </div>
+        </div>
+
+        <div class="tiny" style="margin-top: 14px;">Scope: browser-only state · mock artwork · simulated approval/revision · no AI model or backend.</div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="eyebrow">Common questions</div>
+        <h2>Everything a client needs to understand.</h2>
+        <p class="sub">A short FAQ to make the concept feel more complete and trustworthy for a professional product pitch.</p>
+
+        <div class="faq-grid">
+          <div class="faq-item open">
+            <button type="button">
+              <span>Is this a real product or just a demo?</span>
+              <span class="plus">−</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">This is a concept prototype built as a front-end demo to show the approval workflow. It is intentionally offline and does not connect to a live backend.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button">
+              <span>How does the client approve something?</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">The client opens the review link, sees the design, leaves optional feedback, and either approves the version or requests changes.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button">
+              <span>Does it replace WhatsApp or email?</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">No. It complements the existing communication flow by creating a single, structured approval point instead of ambiguous chat decisions.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button">
+              <span>What is the business value for freelancers?</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">It reduces revision confusion, gives a clear decision record, and helps freelancers stay organized across multiple design versions and clients.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="pricing">
+          <div>
+            <span class="eyebrow" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9);">A testable offer</span>
+            <h2>Pay for clarity, not complexity.</h2>
+            <p style="margin: 0; max-width: 560px; color: rgba(255,255,255,0.8);">Proposed first-month pilot for solo designers. The ₹299 offer and later ₹499/month price are hypotheses to test before a full build.</p>
+          </div>
+          <div class="price">
+            <strong>₹299</strong>
+            <small>pilot month · proposed</small>
+            <button class="btn" type="button" onclick="showLead()">Request pilot (simulation)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">FinalOK · Concept and interactive local prototype prepared for a hiring exercise. Sample content only; not a deployed product or live lead-capture system.</div>
+  </footer>
+
+  <div id="leadModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="leadHeading">
+    <div class="modalbox">
+      <div class="modal-header">
+        <h3 id="leadHeading">Pilot interest · demonstration</h3>
+        <button class="close-x" type="button" aria-label="Close pilot form" onclick="hideLead()">×</button>
+      </div>
+      <p class="helper">This form only demonstrates how a visitor might express interest. Nothing is submitted, emailed, or stored remotely.</p>
+      <form id="leadForm">
+        <div class="field">
+          <label for="leadName">Name (fictional)</label>
+          <input id="leadName" required value="Sample Freelancer" />
+        </div>
+        <div class="field">
+          <label for="leadContact">Email (fictional)</label>
+          <input id="leadContact" required type="email" value="sample@example.com" />
+        </div>
+        <p id="leadResponse" class="tiny" role="status"></p>
+        <div class="modalrow">
+          <button class="btn secondary" type="button" onclick="hideLead()">Close</button>
+          <button class="btn" type="submit">Submit sample</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <button class="back-to-top" type="button" aria-label="Back to top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑</button>
+
+  <script src="script.js" defer></script>
+  <script>
+    let project = { designer: 'Jagjeevan Design Studio', client: 'Cedar & Co. Café', title: 'Weekend market Instagram post', version: 'V2' };
+    let decision = null, comment = '', lastTime = '';
+
+    function txt(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+    function go(n) {
+      for (let i = 1; i <= 4; i++) {
+        const stage = document.getElementById('stage' + i);
+        if (stage) stage.hidden = i !== n;
+      }
+      document.querySelectorAll('.step').forEach((b) => {
+        b.classList.toggle('active', Number(b.dataset.stage) === n);
+      });
+      if (n === 4) renderResult();
+      document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function saveProject() {
+      const d = document.getElementById('designer').value.trim();
+      const c = document.getElementById('client').value.trim();
+      const t = document.getElementById('campaign').value.trim();
+      const v = document.getElementById('version').value.trim();
+      if (!d || !c || !t || !v) return;
+
+      project = { designer: d, client: c, title: t, version: v };
+      decision = null;
+      comment = '';
+
+      txt('shareTitle', t);
+      txt('reviewTitle', t);
+      txt('reviewClient', 'For ' + c + ' · Version ' + v);
+      document.getElementById('demoLink').textContent = 'finalok.example/review/sample-001';
+      txt('copyStatus', '');
+      document.getElementById('feedback').value = '';
+      go(2);
+    }
+
+    async function copyDemo() {
+      const value = 'finalok.example/review/sample-001 (illustrative; not live)';
+      try {
+        await navigator.clipboard.writeText(value);
+        txt('copyStatus', 'Sample text copied. It is not a working web link.');
+      } catch (e) {
+        txt('copyStatus', 'Browser copy permission unavailable; manually copy the sample text above.');
+      }
+    }
+
+    function submitDecision(type) {
+      const msg = document.getElementById('feedback').value.trim();
+      if (type === 'changes' && !msg) {
+        txt('clientError', 'Please explain what needs to change.');
+        document.getElementById('feedback').focus();
+        return;
+      }
+
+      txt('clientError', '');
+      decision = type;
+      comment = msg;
+      lastTime = new Date().toLocaleString();
+      go(4);
+    }
+
+    function renderResult() {
+      txt('resultTitle', project.title);
+      txt('resultMeta', project.client + ' · ' + project.version);
+
+      const badge = document.getElementById('resultBadge');
+      const note = document.getElementById('resultNote');
+
+      if (decision === 'approved') {
+        badge.className = 'status yes';
+        txt('resultBadge', 'Approved');
+        note.className = 'stamp';
+        txt('resultNote', 'This version was explicitly approved in the demo.');
+      } else if (decision === 'changes') {
+        badge.className = 'status edit';
+        txt('resultBadge', 'Changes requested');
+        note.className = 'stamp warn';
+        txt('resultNote', 'Revision requested: ' + comment);
+      } else {
+        badge.className = 'status await';
+        txt('resultBadge', 'Awaiting review');
+        note.className = 'stamp warn';
+        txt('resultNote', 'No decision has been recorded yet. Try the client review step.');
+      }
+
+      txt('history', decision ? (
+        lastTime + ' · Client ' +
+        (decision === 'approved' ? 'approved ' + project.version : 'requested changes to ' + project.version) +
+        (comment ? ' · “' + comment + '”' : '')
+      ) : 'No action yet (demo).');
+    }
+
+    function resetDemo() {
+      project = { designer: 'Jagjeevan Design Studio', client: 'Cedar & Co. Café', title: 'Weekend market Instagram post', version: 'V2' };
+      decision = null;
+      comment = '';
+      ['designer', 'client', 'campaign', 'version'].forEach((id, idx) => {
+        const values = [project.designer, project.client, project.title, project.version];
+        document.getElementById(id).value = values[idx];
+      });
+      document.getElementById('feedback').value = '';
+      txt('clientError', '');
+      txt('copyStatus', '');
+      go(1);
+    }
+
+    function showLead() {
+      document.getElementById('leadModal').classList.remove('hidden');
+      txt('leadResponse', '');
+      document.getElementById('leadName').focus();
+    }
+
+    function hideLead() {
+      document.getElementById('leadModal').classList.add('hidden');
+    }
+
+    function submitLead() {
+      const form = document.getElementById('leadForm');
+      if (!form) return;
+      if (!form.reportValidity()) return;
+
+      txt('leadResponse', 'Demo received! In a real product, this would be a lead-capture and follow-up step. No data was transmitted.');
+      setTimeout(() => {
+        hideLead();
+      }, 900);
+    }
+
+    document.getElementById('leadForm')?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      submitLead();
+    });
+
+    document.getElementById('leadModal').addEventListener('click', (e) => {
+      if (e.target.id === 'leadModal') hideLead();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') hideLead();
+    });
+  </script>
+</body>
+</html>
